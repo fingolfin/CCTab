@@ -64,15 +64,15 @@ end);
 ##  Note that this function cannot be used for arbitrary class functions,
 ##  it only works for class functions which are rational linear combinations of
 ##  irreducible characters.
-##  <Example>
+##  <Example>gap> G := AlternatingGroup(5);;
 ##  gap> G := AlternatingGroup(5);;
 ##  gap> CCT := CCTable(G);;
 ##  gap> irr := Irr(CCT);
-##  [ [ 1, 1, 1, 1, 0, 0, 0 ], [ 3, -1, 0, 0, 0, -1, -1 ],
-##    [ 3, -1, 0, 1, 0, 1, 1 ], [ 4, 0, 1, -1, 0, 0, 0 ],
+##  [ [ 1, 1, 1, 1, 0, 0, 0 ], [ 3, -1, 0, 0, 0, -1, -1 ], 
+##    [ 3, -1, 0, 1, 0, 1, 1 ], [ 4, 0, 1, -1, 0, 0, 0 ], 
 ##    [ 5, 1, -1, 0, 0, 0, 0 ] ]
 ##  gap> List(irr, c-> List(irr, d-> ScalarProduct(CCT, c, d)));
-##  [ [ 1, 0, 0, 0, 0 ], [ 0, 1, 0, 0, 0 ], [ 0, 0, 1, 0, 0 ],
+##  [ [ 1, 0, 0, 0, 0 ], [ 0, 1, 0, 0, 0 ], [ 0, 0, 1, 0, 0 ], 
 ##    [ 0, 0, 0, 1, 0 ], [ 0, 0, 0, 0, 1 ] ]
 ##  </Example>
 ##  </Description>

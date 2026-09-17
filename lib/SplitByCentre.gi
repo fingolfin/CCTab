@@ -41,8 +41,7 @@
 ##  the filter <Ref Filt="HasSplittingCentre"/>
 ##  is set in <A>CCT</A> and the attribute
 ##  <Ref Attr="SplittingCentre"/> of <A>CCT</A> is set to <A>zind</A>.
-##  <Example>
-##  gap> G := SL(4,5);;
+##  <Example>gap> G := SL(4,5);;
 ##  gap> CCT := CCTable(G);;
 ##  gap> SplitByCentre(CCT);
 ##  gap> HasSplittingCentre(CCT);
@@ -170,20 +169,20 @@ end);
 ##  <Ref Func="EncodeForCCTable"/>). In the second form <A>ech</A> is a
 ##  character endoded for <A>CCT</A>. This function decomposes the character
 ##  according to the splitting centre (see <Ref Oper="SplitByCentre"/>).
-##  <Example>
+##  <Example>gap> G := SmallGroup(96, 14);;
 ##  gap> G := SmallGroup(96, 14);;
 ##  gap> CCT := CCTable(G);;
 ##  gap> SplitByCentre(CCT);
 ##  gap> U := TrivialSubgroup(G);;
 ##  gap> reg := InducedClassFunction(TrivialCharacter(U), G);;
 ##  gap> SplitCharacterByCentre(CCT, reg);
-##  [ [ 24, 0, 0, 24, 0, 24, 0, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0,
-##        0, 0, 0, 0 ],
-##    [ 24, 0, 0, -24, 0, 24, 0, 0, 0, 0, 0, 0, 0, -24, 0, 0, 0, 0, 0, 0,
-##        0, 0, 0, 0 ],
-##    [ 24, 0, 0, 24, 0, -24, 0, 0, 0, 0, 0, 0, 0, -24, 0, 0, 0, 0, 0, 0,
-##        0, 0, 0, 0 ],
-##    [ 24, 0, 0, -24, 0, -24, 0, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0,
+##  [ [ 24, 0, 0, 24, 0, 24, 0, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 
+##        0, 0, 0, 0 ], 
+##    [ 24, 0, 0, -24, 0, 24, 0, 0, 0, 0, 0, 0, 0, -24, 0, 0, 0, 0, 0, 0, 
+##        0, 0, 0, 0 ], 
+##    [ 24, 0, 0, 24, 0, -24, 0, 0, 0, 0, 0, 0, 0, -24, 0, 0, 0, 0, 0, 0, 
+##        0, 0, 0, 0 ], 
+##    [ 24, 0, 0, -24, 0, -24, 0, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 
 ##        0, 0, 0, 0 ] ]
 ##  </Example>
 ##  </Description>

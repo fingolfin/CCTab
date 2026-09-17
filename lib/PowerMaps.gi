@@ -48,8 +48,7 @@
 ##  <Ref Func="PositionConjugacyClass"/>; the algorithm computes the
 ##  orbit of the class of <M>x</M> under the action of the unit group
 ##  of the integers modulo <M>m</M>.
-##  <Example>
-##  gap> G := AlternatingGroup(5);;
+##  <Example>gap> G := AlternatingGroup(5);;
 ##  gap> List(ConjugacyClasses(G), c-> Order(Representative(c)));
 ##  [ 1, 2, 3, 5, 5 ]
 ##  gap> PowerMapsOfAllClasses(G);
@@ -229,14 +228,14 @@ end);
 ##  every <E>rational</E> class of the group, in the order given by
 ##  <Ref Attr="RationalClassSets"/> (i.e., conjugacy classes belonging to
 ##  the same rational class share one entry).
-##  <Example>
+##  <Example>gap> G := AlternatingGroup(5);;
 ##  gap> G := AlternatingGroup(5);;
 ##  gap> T := CCTable(G);;
 ##  gap> InduceAllFromCyclicSubgroup(G, 4);
-##  [ [ 12, 0, 0, 2, 2 ], [ 12, 0, 0, E(5)+E(5)^4, E(5)^2+E(5)^3 ],
+##  [ [ 12, 0, 0, 2, 2 ], [ 12, 0, 0, E(5)+E(5)^4, E(5)^2+E(5)^3 ], 
 ##    [ 12, 0, 0, E(5)^2+E(5)^3, E(5)+E(5)^4 ] ]
 ##  gap> InduceAllFromCyclicSubgroup(T, 4);
-##  [ [ 12, 0, 0, 2 ], [ 12, 0, 0, E(5)+E(5)^4 ],
+##  [ [ 12, 0, 0, 2 ], [ 12, 0, 0, E(5)+E(5)^4 ], 
 ##    [ 12, 0, 0, E(5)^2+E(5)^3 ] ]
 ##  </Example>
 ##  </Description>
@@ -297,8 +296,7 @@ end);
 ##  cyclic subgroups (that is cyclic subgroups not contained in larger cyclic
 ##  subgroups) of <A>G</A>, up to conjugacy. The returned numbers are
 ##  always first entries of the lists in <Ref Attr="RationalClassSets"/>.
-##  <Example>
-##  gap> MaximalCyclics(AlternatingGroup(5));
+##  <Example>gap> MaximalCyclics(AlternatingGroup(5));
 ##  [ 4, 3, 2 ]
 ##  </Example>
 ##  </Description>
@@ -342,11 +340,11 @@ end);
 ##  <Ref Attr="MaximalCyclics"/> and
 ##  <Ref Func="InduceAllFromCyclicSubgroup"/>. These characters always span
 ##  the vector space of class functions on <A>G</A>.
-##  <Example>
+##  <Example>gap> G := AlternatingGroup(5);;
 ##  gap> G := AlternatingGroup(5);;
 ##  gap> indcyc := InducedFromAllMaximalCyclicSubgroups(G);
-##  [ [ 12, 0, 0, 2, 2 ], [ 12, 0, 0, E(5)^2+E(5)^3, E(5)+E(5)^4 ],
-##    [ 12, 0, 0, E(5)+E(5)^4, E(5)^2+E(5)^3 ], [ 20, 0, -1, 0, 0 ],
+##  [ [ 12, 0, 0, 2, 2 ], [ 12, 0, 0, E(5)^2+E(5)^3, E(5)+E(5)^4 ], 
+##    [ 12, 0, 0, E(5)+E(5)^4, E(5)^2+E(5)^3 ], [ 20, 0, -1, 0, 0 ], 
 ##    [ 20, 0, 2, 0, 0 ], [ 30, -2, 0, 0, 0 ], [ 30, 2, 0, 0, 0 ] ]
 ##  gap> Rank(indcyc);
 ##  5
@@ -378,8 +376,7 @@ end);
 ##  increasing element order and then by increasing class length. The
 ##  first entry of each inner list can be used as a canonical
 ##  representative number for that rational class.
-##  <Example>
-##  gap> G := AlternatingGroup(5);;
+##  <Example>gap> G := AlternatingGroup(5);;
 ##  gap> List(ConjugacyClasses(G), c-> Order(Representative(c)));
 ##  [ 1, 2, 3, 5, 5 ]
 ##  gap> RationalClassSets(G);
@@ -421,8 +418,7 @@ end);
 ##  <Returns>a non-negative integer</Returns>
 ##  <Description>
 ##  Returns the number of rational classes of the finite group <A>G</A>.
-##  <Example>
-##  gap> NrRationalClasses(AlternatingGroup(5));
+##  <Example>gap> NrRationalClasses(AlternatingGroup(5));
 ##  4
 ##  </Example>
 ##  </Description>
@@ -561,16 +557,16 @@ end);
 ##  <C>[i1, l[i1], i2, l[i2], ...]</C>, where indices with <C>l[i] = 0</C>
 ##  are left out. (This data structure is used by a fast function for
 ##  computing scalar products of generalized characters.)
-##  <Example>
+##  <Example>gap> G := AlternatingGroup(5);;
 ##  gap> G := AlternatingGroup(5);;
 ##  gap> rci := RationalClassesInfo(G);;
 ##  gap> rci[2];
-##  rec( classes := [ 2 ], classlen := 15, conductor := 1,
+##  rec( classes := [ 2 ], classlen := 15, conductor := 1, 
 ##    exponents := [ 2, 2 ], ind := 2, order := 2 )
 ##  gap> rci[4];
-##  rec( classes := [ 4, 5 ], classlen := 12, conductor := 5,
-##    cpol := [ 1, 1, 1, 1, 1 ], dim := 4, exponents := [ 4, 4, 2 ],
-##    field := NF(5,[ 1, 4 ]), ind := [ 4 .. 7 ], order := 5,
+##  rec( classes := [ 4, 5 ], classlen := 12, conductor := 5, 
+##    cpol := [ 1, 1, 1, 1, 1 ], dim := 4, exponents := [ 4, 4, 2 ], 
+##    field := NF(5,[ 1, 4 ]), ind := [ 4 .. 7 ], order := 5, 
 ##    ratvec := [ 0, 2, 2, -1, 4, -1 ], stabilizer := [ 1, 4 ] )
 ##  </Example>
 ##  </Description>
@@ -698,11 +694,9 @@ end);
 ##  <P/>
 ##  Only the non-zero class functions (for rational classes in the image of
 ##  <M>g \mapsto g^{<A>n</A>}</M>) are returned.
-##  <Example>
-##  gap> G := AlternatingGroup(5);;
+##  <Example>gap> G := AlternatingGroup(5);;
 ##  gap> pmchars := PowerMapCharacters(G, 2);
 ##  [ [ 30, 30, 0, 0, 0 ], [ 0, 0, 30, 0, 0 ], [ 0, 0, 0, 30, 30 ] ]
-##  gap>
 ##  gap> MatScalarProducts(Irr(G), pmchars);
 ##  [ [ 8, 2, 10, -6, -6 ], [ 10, 10, -10, 0, 0 ], [ 12, -12, 0, 6, 6 ] ]
 ##  </Example>
@@ -758,10 +752,10 @@ end);
 ##  Class functions with the same
 ##  pattern of zero entries are reduced to the one with (componentwise)
 ##  minimal non-zero values.
-##  <Example>
+##  <Example>gap> G := AlternatingGroup(5);;
 ##  gap> G := AlternatingGroup(5);;
 ##  gap> SmallPowerMapCharacters(G);
-##  [ [ 0, 0, 0, 5, 5 ], [ 0, 0, 3, 0, 0 ], [ 0, 4, 0, 0, 0 ],
+##  [ [ 0, 0, 0, 5, 5 ], [ 0, 0, 3, 0, 0 ], [ 0, 4, 0, 0, 0 ], 
 ##    [ 4, 0, 4, 4, 4 ], [ 3, 3, 0, 3, 3 ], [ 5, 5, 5, 0, 0 ] ]
 ##  </Example>
 ##  </Description>
@@ -820,8 +814,7 @@ end);
 ##  The first function finds the classes of the images of generators of
 ##  maximal cyclic subgroups and deduces the rest from 
 ##  <Ref  Func="PowerMapsOfAllClasses"/> for <A>G</A>.
-##  <Example><![CDATA[
-##  gap> G := AlternatingGroup(5);;
+##  <Example><![CDATA[gap> G := AlternatingGroup(5);;
 ##  gap> A := AutomorphismGroup(G);
 ##  <group of size 120 with 3 generators>
 ##  gap> ActionAutomorphismsOnConjugacyClasses(G, A);

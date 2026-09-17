@@ -75,8 +75,7 @@ end);
 ##  The &GAP; variant is just <Ref BookName="Reference" 
 ##  Func="HermiteNormalFormIntegerMat"/>,
 ##  the standalone variant essentially uses <C>fmpz_mat_hnf</C> from FLINT.
-##  <Example>
-##  gap> HermiteIntMat(RandomUnimodularMat(4));
+##  <Example>gap> HermiteIntMat(RandomUnimodularMat(4));
 ##  [ [ 1, 0, 0, 0 ], [ 0, 1, 0, 0 ], [ 0, 0, 1, 0 ], [ 0, 0, 0, 1 ] ]
 ##  </Example>
 ##  </Description>
@@ -197,11 +196,10 @@ end);
 ##  Remark: The matrix <C>B</C> is the transpose of the <M>\mu</M>-matrix in
 ##  classical LLL, with its <M>i</M>-th row multiplied by the <M>i</M>-th
 ##  principal minor <M>d_i</M>.
-##  <Example>
-##  gap> A := [ [ 9, -3, 1, -2 ], [ -3, 3, 1, 1 ], [ 1, 1, 13, -2 ],
+##  <Example>gap> A := [ [ 9, -3, 1, -2 ], [ -3, 3, 1, 1 ], [ 1, 1, 13, -2 ],
 ##  >   [ -2, 1, -2, 5 ] ];;
 ##  gap> PermutedFractionFreeIntegerGaussPositiveDefinite(A);
-##  [ [ [ 3, 1, -3, 1 ], [ 0, 14, -3, -7 ], [ 0, 0, 81, 21 ],
+##  [ [ [ 3, 1, -3, 1 ], [ 0, 14, -3, -7 ], [ 0, 0, 81, 21 ], 
 ##        [ 0, 0, 0, 900 ] ], (1,3,4,2) ]
 ##  </Example>
 ##  </Description>
@@ -278,10 +276,10 @@ end);
 ##  <P/>
 ##  This is a simplified variant of <Ref BookName="EDIM"
 ##  Func="InverseRatMat"/>, based on a <M>p</M>-adic lifting approach.
-##  <Example>
+##  <Example>gap> A := RandomUnimodularMat(5);;
 ##  gap> A := RandomUnimodularMat(5);;
 ##  gap> A * InverseUnimodularMat(A);
-##  [ [ 1, 0, 0, 0, 0 ], [ 0, 1, 0, 0, 0 ], [ 0, 0, 1, 0, 0 ],
+##  [ [ 1, 0, 0, 0, 0 ], [ 0, 1, 0, 0, 0 ], [ 0, 0, 1, 0, 0 ], 
 ##    [ 0, 0, 0, 1, 0 ], [ 0, 0, 0, 0, 1 ] ]
 ##  </Example>
 ##  </Description>
@@ -527,12 +525,12 @@ end);
 ##  <P/>
 ##  The algorithm is similar to the modular variant of the LLL-algorithm
 ##  described in <Cite Key="Sto96"/>, but here the main loop is parallelized.
-##  <Example>
+##  <Example>gap> A := RandomUnimodularMat(5);;
 ##  gap> A := RandomUnimodularMat(5);;
 ##  gap> gr := A * TransposedMat(A);;
 ##  gap> h := LLLTransformUnimodularGram(gr);;
 ##  gap> h * gr * TransposedMat(h);
-##  [ [ 1, 0, 0, 0, 0 ], [ 0, 1, 0, 0, 0 ], [ 0, 0, 1, 0, 0 ],
+##  [ [ 1, 0, 0, 0, 0 ], [ 0, 1, 0, 0, 0 ], [ 0, 0, 1, 0, 0 ], 
 ##    [ 0, 0, 0, 1, 0 ], [ 0, 0, 0, 0, 1 ] ]
 ##  </Example>
 ##  </Description>

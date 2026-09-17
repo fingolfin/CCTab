@@ -79,19 +79,19 @@ end);
 ##  loaded then for many groups <A>G</A> its <C>CharacterTable(<A>G</A>)</C>
 ##  will also have an attribute <Ref Attr="CCTable"/> and delegate the
 ##  computation of the irreducible characters to this <Ref Attr="CCTable"/>.
-##  <Example>
+##  <Example>gap> G := AlternatingGroup(5);;
 ##  gap> G := AlternatingGroup(5);;
 ##  gap> CCT := CCTable(G);
 ##  CCTable( Alt( [ 1 .. 5 ] ) )
 ##  gap> IsCCTable(CCT);
 ##  true
 ##  gap> Irr(CCT);
-##  [ [ 1, 1, 1, 1, 0, 0, 0 ], [ 3, -1, 0, 0, 0, -1, -1 ],
-##    [ 3, -1, 0, 1, 0, 1, 1 ], [ 4, 0, 1, -1, 0, 0, 0 ],
+##  [ [ 1, 1, 1, 1, 0, 0, 0 ], [ 3, -1, 0, 0, 0, -1, -1 ], 
+##    [ 3, -1, 0, 1, 0, 1, 1 ], [ 4, 0, 1, -1, 0, 0, 0 ], 
 ##    [ 5, 1, -1, 0, 0, 0, 0 ] ]
 ##  gap> ExpandFromCCTable(CCT, Irr(CCT));
-##  [ [ 1, 1, 1, 1, 1 ], [ 3, -1, 0, -E(5)^2-E(5)^3, -E(5)-E(5)^4 ],
-##    [ 3, -1, 0, -E(5)-E(5)^4, -E(5)^2-E(5)^3 ], [ 4, 0, 1, -1, -1 ],
+##  [ [ 1, 1, 1, 1, 1 ], [ 3, -1, 0, -E(5)^2-E(5)^3, -E(5)-E(5)^4 ], 
+##    [ 3, -1, 0, -E(5)-E(5)^4, -E(5)^2-E(5)^3 ], [ 4, 0, 1, -1, -1 ], 
 ##    [ 5, 1, -1, 0, 0 ] ]
 ##  </Example>
 ##  </Description>
@@ -189,20 +189,20 @@ InstallOtherMethod(SizesConjugacyClasses, ["IsCCTable"],
 ##  argument <A>enc</A> is not given, all irreducible characters
 ##  of <A>CCT</A> found so far are expanded.
 ##
-##  <Example>
+##  <Example>gap> G := AlternatingGroup(5);;
 ##  gap> G := AlternatingGroup(5);;
 ##  gap> CCT := CCTable(G);;
 ##  gap> ind := InducedFromAllMaximalCyclicSubgroups(G);;
 ##  gap> enc := EncodeForCCTable(CCT, ind);
-##  [ [ 12, 0, 0, 2, 0, 0, 0 ], [ 12, 0, 0, 0, 0, 1, 1 ],
-##    [ 12, 0, 0, -1, 0, -1, -1 ], [ 20, 0, -1, 0, 0, 0, 0 ],
-##    [ 20, 0, 2, 0, 0, 0, 0 ], [ 30, -2, 0, 0, 0, 0, 0 ],
+##  [ [ 12, 0, 0, 2, 0, 0, 0 ], [ 12, 0, 0, 0, 0, 1, 1 ], 
+##    [ 12, 0, 0, -1, 0, -1, -1 ], [ 20, 0, -1, 0, 0, 0, 0 ], 
+##    [ 20, 0, 2, 0, 0, 0, 0 ], [ 30, -2, 0, 0, 0, 0, 0 ], 
 ##    [ 30, 2, 0, 0, 0, 0, 0 ] ]
 ##  gap> ExpandFromCCTable(CCT);
 ##  [  ]
 ##  gap> ExpandFromCCTable(CCT, enc);
-##  [ [ 12, 0, 0, 2, 2 ], [ 12, 0, 0, E(5)^2+E(5)^3, E(5)+E(5)^4 ],
-##    [ 12, 0, 0, E(5)+E(5)^4, E(5)^2+E(5)^3 ], [ 20, 0, -1, 0, 0 ],
+##  [ [ 12, 0, 0, 2, 2 ], [ 12, 0, 0, E(5)^2+E(5)^3, E(5)+E(5)^4 ], 
+##    [ 12, 0, 0, E(5)+E(5)^4, E(5)^2+E(5)^3 ], [ 20, 0, -1, 0, 0 ], 
 ##    [ 20, 0, 2, 0, 0 ], [ 30, -2, 0, 0, 0 ], [ 30, 2, 0, 0, 0 ] ]
 ##  </Example>
 ##  </Description>
@@ -350,8 +350,7 @@ end);
 ##  <Ref Oper="SplitByCentre"/>, if that has been set). This does not yet
 ##  update the Hermite normal forms describing the lattice(s) of found
 ##  characters, see <Ref Func="UpdateHNFCCTable"/>.
-##  <Example>
-##  gap> G := AlternatingGroup(5);;
+##  <Example>gap> G := AlternatingGroup(5);;
 ##  gap> ind := InducedFromAllMaximalCyclicSubgroups(G);;
 ##  gap> CCT := CCTable(G);;
 ##  gap> ImportToCCTable(CCT, ind);
@@ -525,8 +524,7 @@ end);
 ##  divisible by primes <M>p</M> for which the Sylow <M>p</M>-subgroups of
 ##  <M>G</M> are not cyclic. The algorithm makes use of <Ref
 ##  BookName="EDIM" Func="ElementaryDivisorsPPartRk"/>.
-##  <Example>
-##  gap> G := MathieuGroup(24);;
+##  <Example>gap> G := MathieuGroup(24);;
 ##  gap> CCT := CCTable(G);;
 ##  gap> ImportInducedFromAllMaximalCyclicToCCTable(CCT);
 ##  gap> FindIndexCCTable(CCT);
@@ -667,7 +665,7 @@ end);
 ##  by the class functions stored in <A>CCT</A> in the full
 ##  lattice spanned by the irreducible characters of the 
 ##  underlying group. Otherwise, <K>fail</K> is returned.
-##  <Example>
+##  <Example>gap> G := AlternatingGroup(5);;
 ##  gap> G := AlternatingGroup(5);;
 ##  gap> CCT := CCTable(G);;
 ##  gap> ImportInducedFromAllMaximalCyclicToCCTable(CCT);
@@ -678,8 +676,8 @@ end);
 ##  2
 ##  gap> FindIrreduciblesInFullLattices(CCT);
 ##  gap> CCT!.irr;
-##  [ [ 1, 1, 1, 1, 0, 0, 0 ], [ 3, -1, 0, 0, 0, -1, -1 ],
-##    [ 3, -1, 0, 1, 0, 1, 1 ], [ 4, 0, 1, -1, 0, 0, 0 ],
+##  [ [ 1, 1, 1, 1, 0, 0, 0 ], [ 3, -1, 0, 0, 0, -1, -1 ], 
+##    [ 3, -1, 0, 1, 0, 1, 1 ], [ 4, 0, 1, -1, 0, 0, 0 ], 
 ##    [ 5, 1, -1, 0, 0, 0, 0 ] ]
 ##  </Example>
 ##  </Description>
@@ -733,12 +731,12 @@ end);
 ##  <Ref Func="FindIndexCCTable"/> returns <M>1</M>. It then calls
 ##  <Ref Func="FindIrreduciblesInFullLattices"/> to extract the
 ##  irreducible characters from the completed lattice. 
-##  <Example>
+##  <Example>gap> G := AlternatingGroup(5);;
 ##  gap> G := AlternatingGroup(5);;
 ##  gap> CCT := CCTable(G);;
 ##  gap> IrrCCTableHNF(CCT);
-##  [ [ 1, 1, 1, 1, 0, 0, 0 ], [ 3, -1, 0, 0, 0, -1, -1 ],
-##    [ 3, -1, 0, 1, 0, 1, 1 ], [ 4, 0, 1, -1, 0, 0, 0 ],
+##  [ [ 1, 1, 1, 1, 0, 0, 0 ], [ 3, -1, 0, 0, 0, -1, -1 ], 
+##    [ 3, -1, 0, 1, 0, 1, 1 ], [ 4, 0, 1, -1, 0, 0, 0 ], 
 ##    [ 5, 1, -1, 0, 0, 0, 0 ] ]
 ##  </Example>
 ##  </Description>
@@ -882,8 +880,7 @@ InstallOtherMethod(Irr, ["IsCCTable"], IrrCCTableHNF);
 ##  the index of the old lattice of <A>hnf</A> in this new lattice (which
 ##  is <M>1</M> if <A>v</A> was already contained in the old lattice).
 ##  This is used by <Ref Func="UpdateHNFCCTable"/>.
-##  <Example>
-##  gap> hnf := [ [ 1, 0, 1, 478, -2, -649 ], [ 0, 1, 1, 362, 2, -492 ],
+##  <Example>gap> hnf := [ [ 1, 0, 1, 478, -2, -649 ], [ 0, 1, 1, 362, 2, -492 ],
 ##  > [ 0, 0, 0, 546, 0, -742 ] ];;
 ##  gap> piv := [1,2,4];;
 ##  gap> v := [3, 7, 1, 6, 0, -1];;

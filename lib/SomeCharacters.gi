@@ -43,22 +43,21 @@
 ##  <Mark>otherwise</Mark>
 ##  <Item>the regular character of <A>G</A></Item>
 ##  </List>
-##  <Example><![CDATA[
-##  gap> NaturalCharacters(AlternatingGroup(5));
+##  <Example><![CDATA[gap> NaturalCharacters(AlternatingGroup(5));
 ##  [ Character( CharacterTable( Alt( [ 1 .. 5 ] ) ),
 ##    [ 4, 0, 1, -1, -1 ] ) ]
 ##  gap> NaturalCharacters(SL(3,5));
 ##  [ Character( CharacterTable( SL(3,5) ),
-##    [ 124, 4, 4, 0, 0, 4, 24, 4, 4, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-##        0, 0, 0, 0, 0, 0, 0, 0, 0 ] ),
+##    [ 124, 4, 4, 0, 0, 4, 24, 4, 4, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+##        0, 0, 0, 0, 0, 0, 0, 0, 0 ] ), 
 ##    Character( CharacterTable( SL(3,5) ),
-##    [ 15624, 24, 24, 0, 0, 24, 624, 24, 24, 0, 0, 24, 0, 0, 0, 0, 0, 0,
-##        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] ),
+##    [ 15624, 24, 24, 0, 0, 24, 624, 24, 24, 0, 0, 24, 0, 0, 0, 0, 0, 0, 
+##        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] ), 
 ##    Character( CharacterTable( SL(3,5) ),
-##    [ 30, 6, 0, 6, 6, 2, 5, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, -1,
+##    [ 30, 6, 0, 6, 6, 2, 5, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, -1, 
 ##        -1, -1, -1, -1, -1, -1, -1, -1, -1 ] ) ]
 ##  gap> NaturalCharacters(SmallGroup(24,4));
-##  [ Character( CharacterTable( <pc group of size 24 with
+##  [ Character( CharacterTable( <pc group of size 24 with 
 ##      4 generators> ), [ 24, 0, 0, 0, 0, 0, 0, 0, 0 ] ) ]
 ##  ]]></Example>
 ##  </Description>

@@ -31,8 +31,7 @@
 ##  <A>G</A>, that is the maximal cyclic subgroups (see <Ref
 ##  Attr="MaximalCyclics"/>) and the subgroups descibed by this function. See
 ##  <Cite Key="Isaacs" Where="Chapter 8"/> for more details.
-##  <Example>
-##  gap> G := SL(4,2);;
+##  <Example>gap> G := SL(4,2);;
 ##  gap> MaximalNonCyclicElementarySubgroups(G);
 ##  [ [ 1, 3 ], [ 1, 2 ], [ 6, 2 ] ]
 ##  </Example>
@@ -134,8 +133,7 @@ end);
 ##  is returned instead (this can be used to skip elementary
 ##  subgroups that would be too expensive to handle)</Item>
 ##  </List>
-##  <Example>
-##  gap> G := AlternatingGroup(5);;
+##  <Example>gap> G := AlternatingGroup(5);;
 ##  gap> InducedFromElementary(G, 1, 2);
 ##  [ [ 15, -1, 0, 0, 0 ], [ 15, 3, 0, 0, 0 ] ]
 ##  </Example>
@@ -262,8 +260,7 @@ end);
 ##  <P/>
 ##  The second entry <C>needed</C> is the set of numbers of classes of
 ##  <M>S</M> occurring in <C>fus</C>.
-##  <Example>
-##  gap> G := AlternatingGroup(5);;
+##  <Example>gap> G := AlternatingGroup(5);;
 ##  gap> FusionElementaryCCTable(CCTable(G), 1,2);
 ##  [ [ [ 1, [ 0, 1 ] ], [ 2, [ 0, 2, 3, 4 ] ] ], [ 1, 2, 3, 4 ] ]
 ##  </Example>
@@ -439,8 +436,7 @@ end);
 ##  <P/>
 ##  In contrast to <Ref Func="InducedFromElementary"/>, this function does
 ##  not detect and remove induced characters occurring several times.
-##  <Example>
-##  gap> G := SymmetricGroup(5);;
+##  <Example>gap> G := SymmetricGroup(5);;
 ##  gap> ind := InductionDataFromElementaryCCTable(CCTable(G),1,2);;
 ##  gap> ind.next();
 ##  [ [ 15, 3, 3, 0, 1, 0, 0 ] ]

@@ -228,18 +228,21 @@ end;
 ##  stored class representatives; the second computes the cycle type
 ##  and the third is only relevant for 5-cycles and does one conjugacy
 ##  test against the representative of class 4.
-##  <Example>
+##  <Example>gap> G := AlternatingGroup(5);;
 ##  gap> G := AlternatingGroup(5);;
 ##  gap> ConjugacyClassInvariants(G);
-##  rec( G := Alt( [ 1 .. 5 ] ),
-##    classes := [ ()^G, (1,2)(3,4)^G, (1,2,3)^G, (1,2,3,4,5)^G, (1,2,3,5,4)^G ],
-##    reps := [ (), (1,2)(3,4), (1,2,3), (1,2,3,4,5), (1,2,3,5,4) ],
-##    tree := [ [ 1 .. 5 ], function( r, x ) ... end, [ 1, 2, 3, 4, 5, fail ],
-##        [ 1, 2, 3, 4, 5,
-##            [ [ 1 .. 5 ], function( r, x ) ... end,
-##                [ [  ], [ ,,, 1 ], [ , 1 ], [ 2 ] ],
-##                [ 1, [ [ 4, 5 ], function( r, x ) ... end, [ 4, 5 ], [ 4, 5 ] ],
-##                    3, 2 ] ] ] ] )
+##  rec( G := Alt( [ 1 .. 5 ] ), 
+##    classes := [ ()^G, (1,2)(3,4)^G, (1,2,3)^G, (1,2,3,4,5)^G, 
+##        (1,2,3,5,4)^G ], 
+##    reps := [ (), (1,2)(3,4), (1,2,3), (1,2,3,4,5), (1,2,3,5,4) ], 
+##    tree := [ [ 1 .. 5 ], function( r, x ) ... end, 
+##        [ 1, 2, 3, 4, 5, fail ], 
+##        [ 1, 2, 3, 4, 5, 
+##            [ [ 1 .. 5 ], function( r, x ) ... end, 
+##                [ [  ], [ ,,, 1 ], [ , 1 ], [ 2 ] ], 
+##                [ 1, 
+##                    [ [ 4, 5 ], function( r, x ) ... end, [ 4, 5 ], 
+##                        [ 4, 5 ] ], 3, 2 ] ] ] ] )
 ##  </Example>
 ##  </Description>
 ##  </ManSection>
@@ -301,8 +304,7 @@ end);
 ##  class positions which is guaranteed not to contain the class position
 ##  of the class of <A>x</A>. This information can sometimes help to 
 ##  speed up the identification.
-##  <Example>
-##  gap> G := AlternatingGroup(5);;
+##  <Example>gap> G := AlternatingGroup(5);;
 ##  gap> creps := List(ConjugacyClasses(G), Representative);;
 ##  gap> List(creps, x-> PositionConjugacyClass(G, x^Random(G)));
 ##  [ 1, 2, 3, 4, 5 ]
