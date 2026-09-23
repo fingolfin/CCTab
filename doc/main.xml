@@ -50,11 +50,11 @@ To see some progress information during longer computations the following
 info class can be set to a non-zero level:
 
 <ManSection> 
-<InfoClass Name="InfoCCTab"/> 
+<InfoClass Name="InfoCCTable"/> 
 
 <Description>    
 This is  an <K>Info</K> class for the <Package>CCTab</Package>-package.
-By <C>SetInfoLevel(InfoCCTab, level);</C> with <C>level</C> between <C>1</C>
+By <C>SetInfoLevel(InfoCCTable, level);</C> with <C>level</C> between <C>1</C>
 and <C>3</C> you can switch on the printing of
 some information     during      the    computations     of    certain
 <Package>CCTab</Package>-functions.  <P/>

@@ -36,5 +36,6 @@ DeclareGlobalName("DeterminantGramCCTable");
 
 # Info class
 DeclareInfoClass("InfoCCTable");
-# during development
-SetInfoLevel(InfoCCTable, 4);
+SetInfoLevel(InfoCCTable, 0);
+##  # during development
+##  SetInfoLevel(InfoCCTable, 4);
