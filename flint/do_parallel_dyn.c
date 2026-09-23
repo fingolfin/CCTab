@@ -11,8 +11,8 @@
 
 /*  ====================================================================== */
 // dynamic variant of flint_parallel_do
-slong next_i;
-pthread_mutex_t mutex;
+static slong next_i;
+static pthread_mutex_t mutex=PTHREAD_MUTEX_INITIALIZER;
 
 typedef struct
 {
