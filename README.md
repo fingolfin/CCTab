@@ -30,7 +30,7 @@ which was supervised by the author of this package:
 
 Just download the archive from
    
-       TODO
+      https://www.math.rwth-aachen.de/~Frank.Luebeck/gap/CCTab/ 
 
 and unpack it in one of the 'pkg' directories of your GAP installation,
 or clone the git repository
@@ -41,6 +41,9 @@ Then load the package with
 
        gap> LoadPackage("CCTab");
 
+The package provides some kernel functions and some external programs
+which use the FLINT (flintlib.org) library. We recommend to install them
+as well. See the file 'INSTALL' for details.
 
 ## Feedback
 
