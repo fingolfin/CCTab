@@ -44,25 +44,32 @@ rec( G := Alt( [ 1 .. 5 ] ),
                   [ [ 4, 5 ], function( r, x ) ... end, [ 4, 5 ], 
                       [ 4, 5 ] ], 3, 2 ] ] ] ] )
 
-##  doc/../lib/PowerMaps.gi (51-56)
+##  doc/../lib/PowerMaps.gi (56-68)
 gap> G := AlternatingGroup(5);;
 gap> List(ConjugacyClasses(G), c-> Order(Representative(c)));
 [ 1, 2, 3, 5, 5 ]
 gap> PowerMapsOfAllClasses(G);
 [ [ 1 ], [ 1, 2 ], [ 1, 3, 3 ], [ 1, 4, 5, 5, 4 ], [ 1, 5, 4, 4, 5 ] ]
+gap> t := CharacterTable("M11");
+CharacterTable( "M11" )
+gap> PowerMapsOfAllClasses(t);
+[ [ 1 ], [ 1, 2 ], [ 1, 3, 3 ], [ 1, 4, 2, 4 ], [ 1, 5, 5, 5, 5 ], 
+  [ 1, 6, 3, 2, 3, 6 ], [ 1, 7, 4, 7, 2, 8, 4, 8 ], 
+  [ 1, 8, 4, 8, 2, 7, 4, 7 ], [ 1, 9, 10, 9, 9, 9, 10, 10, 10, 9, 10 ]
+    , [ 1, 10, 9, 10, 10, 10, 9, 9, 9, 10, 9 ] ]
 
-##  doc/../lib/PowerMaps.gi (379-384)
+##  doc/../lib/PowerMaps.gi (422-427)
 gap> G := AlternatingGroup(5);;
 gap> List(ConjugacyClasses(G), c-> Order(Representative(c)));
 [ 1, 2, 3, 5, 5 ]
 gap> RationalClassSets(G);
 [ [ 1 ], [ 2 ], [ 3 ], [ 4, 5 ] ]
 
-##  doc/../lib/PowerMaps.gi (421-423)
+##  doc/../lib/PowerMaps.gi (464-466)
 gap> NrRationalClasses(AlternatingGroup(5));
 4
 
-##  doc/../lib/PowerMaps.gi (560-571)
+##  doc/../lib/PowerMaps.gi (603-614)
 gap> G := AlternatingGroup(5);;
 gap> G := AlternatingGroup(5);;
 gap> rci := RationalClassesInfo(G);;
@@ -75,11 +82,11 @@ rec( classes := [ 4, 5 ], classlen := 12, conductor := 5,
   field := NF(5,[ 1, 4 ]), ind := [ 4 .. 7 ], order := 5, 
   ratvec := [ 0, 2, 2, -1, 4, -1 ], stabilizer := [ 1, 4 ] )
 
-##  doc/../lib/PowerMaps.gi (299-301)
+##  doc/../lib/PowerMaps.gi (342-344)
 gap> MaximalCyclics(AlternatingGroup(5));
 [ 4, 3, 2 ]
 
-##  doc/../lib/PowerMaps.gi (231-240)
+##  doc/../lib/PowerMaps.gi (274-283)
 gap> G := AlternatingGroup(5);;
 gap> G := AlternatingGroup(5);;
 gap> T := CCTable(G);;
@@ -90,7 +97,7 @@ gap> InduceAllFromCyclicSubgroup(T, 4);
 [ [ 12, 0, 0, 2 ], [ 12, 0, 0, E(5)+E(5)^4 ], 
   [ 12, 0, 0, E(5)^2+E(5)^3 ] ]
 
-##  doc/../lib/PowerMaps.gi (343-351)
+##  doc/../lib/PowerMaps.gi (386-394)
 gap> G := AlternatingGroup(5);;
 gap> G := AlternatingGroup(5);;
 gap> indcyc := InducedFromAllMaximalCyclicSubgroups(G);
@@ -100,21 +107,21 @@ gap> indcyc := InducedFromAllMaximalCyclicSubgroups(G);
 gap> Rank(indcyc);
 5
 
-##  doc/../lib/PowerMaps.gi (697-702)
+##  doc/../lib/PowerMaps.gi (740-745)
 gap> G := AlternatingGroup(5);;
 gap> pmchars := PowerMapCharacters(G, 2);
 [ [ 30, 30, 0, 0, 0 ], [ 0, 0, 30, 0, 0 ], [ 0, 0, 0, 30, 30 ] ]
 gap> MatScalarProducts(Irr(G), pmchars);
 [ [ 8, 2, 10, -6, -6 ], [ 10, 10, -10, 0, 0 ], [ 12, -12, 0, 6, 6 ] ]
 
-##  doc/../lib/PowerMaps.gi (755-760)
+##  doc/../lib/PowerMaps.gi (798-803)
 gap> G := AlternatingGroup(5);;
 gap> G := AlternatingGroup(5);;
 gap> SmallPowerMapCharacters(G);
 [ [ 0, 0, 0, 5, 5 ], [ 0, 0, 3, 0, 0 ], [ 0, 4, 0, 0, 0 ], 
   [ 4, 0, 4, 4, 4 ], [ 3, 3, 0, 3, 3 ], [ 5, 5, 5, 0, 0 ] ]
 
-##  doc/../lib/PowerMaps.gi (817-824)
+##  doc/../lib/PowerMaps.gi (860-867)
 gap> G := AlternatingGroup(5);;
 gap> A := AutomorphismGroup(G);
 <group of size 120 with 3 generators>

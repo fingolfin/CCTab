@@ -8,6 +8,7 @@
 ##  
 
 DeclareAttribute("PowerMapsOfAllClasses", IsGroup);
+DeclareAttribute("PowerMapsOfAllClasses", IsOrdinaryTable);
 
 # missing in GAP library
 DeclareAttribute("NrRationalClasses", IsGroup);

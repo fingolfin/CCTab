@@ -159,24 +159,25 @@ function(G, p)
 end);
 # 
 InstallMethod(pPrimeDecomposition, 
-              [IsCharacterTable and HasUnderlyingGroup, IsPosInt],
+              [IsOrdinaryTable, IsPosInt],
 function(tbl, p)
-  local G, map, pms, res, ords, k, i;
-  G := UnderlyingGroup(tbl);
+  local map, pms, ords, res, k, i;
   map := pPrimeDecompositions(tbl);
   if not IsPrimeInt(p) then
     Error("pPrimeDecomposition: second argument must be prime.");
   fi;
-  if not IsBound(map.(p)) then
-      pms := PowerMapsOfAllClasses(G);
-      res := [];
-      ords := OrdersClassRepresentatives(tbl);
-      for i in [1..Length(ords)] do
-          k := pPrimeDecompositionPower(ords[i], p);
-          Add(res, pms[i][(k mod ords[i])+1]);
-      od;
-      map.(p) := res;
+  if IsBound(map.(p)) then
+    return map.(p);
   fi;
+  pms := PowerMapsOfAllClasses(tbl);
+  ords := OrdersClassRepresentatives(tbl);
+  res := [];
+  for i in [1..Length(ords)] do
+      k := pPrimeDecompositionPower(ords[i], p);
+      Add(res, pms[i][(k mod ords[i])+1]);
+  od;
+  MakeImmutable(res);
+  map.(p) := res;
   return map.(p);
 end);
 
@@ -194,7 +195,6 @@ end);
 # for a generalized character chi and prime p the restriction to p'-elements
 # (otherwise 0) multiplied by the p-part of the group order
 # is again a generalized character [Isaacs, problem (15.3)]
-
 InstallGlobalFunction(pPrimeRestriction,
 function(chi, p)
   local tbl, s, q, ch, ords, i;

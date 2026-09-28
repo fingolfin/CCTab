@@ -32,12 +32,13 @@
 ##  <#GAPDoc Label="PowerMapsOfAllClasses">
 ##  <ManSection>
 ##  <Attr Name="PowerMapsOfAllClasses" Arg="G"/>
+##  <Attr Name="PowerMapsOfAllClasses" Label="for character table" Arg="tbl"/>
 ##  <Returns>a list of lists of positive integers</Returns>
 ##  <Description>
 ##  Let <A>G</A> be a finite group and number its conjugacy classes as in
 ##  <C>ConjugacyClasses(<A>G</A>)</C>. If <M>x</M> is a representative of
 ##  class number <M>i</M> and has order <M>m</M>, then the <M>i</M>-th
-##  entry of the returned list is a list of length <M>m</M> whose
+##  entry of <C>PowerMapsOfAllClasses(G)</C> is a list of length <M>m</M> whose
 ##  <M>j</M>-th entry is the number of the class containing
 ##  <M>x^{{j-1}}</M>, for <M>j = 1, \ldots, m</M> (so the first entry is
 ##  always <M>1</M>, corresponding to <M>x^0</M>).
@@ -48,11 +49,22 @@
 ##  <Ref Func="PositionConjugacyClass"/>; the algorithm computes the
 ##  orbit of the class of <M>x</M> under the action of the unit group
 ##  of the integers modulo <M>m</M>.
+##  <P/>
+##  In the second form <C>PowerMapsOfAllClasses(tbl)</C> the result is 
+##  with respect to the ordering of conjugacy classes in the character
+##  table <A>tbl</A>.
 ##  <Example>gap> G := AlternatingGroup(5);;
 ##  gap> List(ConjugacyClasses(G), c-> Order(Representative(c)));
 ##  [ 1, 2, 3, 5, 5 ]
 ##  gap> PowerMapsOfAllClasses(G);
 ##  [ [ 1 ], [ 1, 2 ], [ 1, 3, 3 ], [ 1, 4, 5, 5, 4 ], [ 1, 5, 4, 4, 5 ] ]
+##  gap> t := CharacterTable("M11");
+##  CharacterTable( "M11" )
+##  gap> PowerMapsOfAllClasses(t);
+##  [ [ 1 ], [ 1, 2 ], [ 1, 3, 3 ], [ 1, 4, 2, 4 ], [ 1, 5, 5, 5, 5 ], 
+##    [ 1, 6, 3, 2, 3, 6 ], [ 1, 7, 4, 7, 2, 8, 4, 8 ], 
+##    [ 1, 8, 4, 8, 2, 7, 4, 7 ], [ 1, 9, 10, 9, 9, 9, 10, 10, 10, 9, 10 ]
+##      , [ 1, 10, 9, 10, 10, 10, 9, 9, 9, 10, 9 ] ]
 ##  </Example>
 ##  Several other attributes and functions in this package are implemented using
 ##  <Ref Attr="PowerMapsOfAllClasses"/>.
@@ -205,7 +217,38 @@ InstallMethod(PowerMapsOfAllClasses, ["IsGroup"], function(G)
 
   return res;
 end);
+InstallMethod(PowerMapsOfAllClasses, 
+    ["IsOrdinaryTable and HasUnderlyingGroup"],
+function(tbl)
+  local G, pms, idcl, invid, i;
+  G := UnderlyingGroup(tbl);
+  pms := PowerMapsOfAllClasses(G);
+  idcl := IdentificationOfConjugacyClasses(tbl);
+  invid := [];
+  for i in [1..Length(idcl)] do
+    invid[idcl[i]] := i;
+  od;
+  return List(pms{idcl}, a-> invid{a});
+end);
 
+InstallMethod(PowerMapsOfAllClasses, 
+    ["IsOrdinaryTable and HasComputedPowerMaps"],
+function(tbl)
+  local ords, k, max, res, pm, j, i;
+  ords := OrdersClassRepresentatives(tbl);
+  k := Length(ords);
+  max := Maximum(ords);
+  res := List([1..k], i-> [1]);
+  for j in [1..max-1] do
+    pm := PowerMap(tbl, j);
+    for i in [1..k] do
+      if Length(res[i]) < ords[i] then
+        res[i][j+1] := pm[i];
+      fi;
+    od;
+  od;
+  return res;
+end);
 
 ##  <#GAPDoc Label="InduceAllFromCyclicSubgroup">
 ##  <ManSection>
