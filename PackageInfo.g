@@ -31,7 +31,7 @@ SourceRepository := rec(
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 
-PackageWWWHome :="https://TODO",
+PackageWWWHome :="https://www.math.rwth-aachen.de/~Frank.Luebeck/gap/CCTab/",
 
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),

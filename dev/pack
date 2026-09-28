@@ -1,0 +1,40 @@
+#!/bin/bash
+# utility to wrap the package for distribution    (c) Frank Lübeck
+
+echo " Are versions and dates updated? (dev/setversiondate ...)"
+read -n 1 -p "-->" start
+echo
+if [ $start'X' != 'yX' ]; then
+  echo Ok, please adjust, commit and try again.
+  exit 2
+fi
+
+HERE=`pwd`
+DIRNAM=CCTab-`cat VERSION`
+rm -rf /cache/gap-rsync
+cp -a /usr/local/ca/gap-rsync /cache/
+cd /cache/gap-rsync/pkg
+rm -rf cctab CCTab*
+git clone $HERE
+mv CCTab cctab
+cd cctab
+../../gap makedocrel.g
+rm -rf .git .gitignore dev doc/*.aux doc/*.log doc/*.blg doc/*.xsl doc/*.ilg doc/*.brf doc/*.out
+
+# now pack archive
+cd ..
+mv cctab $DIRNAM
+tar cvf $DIRNAM.tar $DIRNAM
+gzip -9 $DIRNAM.tar
+mv $DIRNAM.tar.gz $HERE
+cd $HERE
+
+echo "If content with the archive $DIRNAM.tar.gz use"
+echo "            repack.py $DIRNAM.tar.gz"
+echo "            rm -f $DIRNAM-win.zip"
+echo "And maybe:"
+echo "            rm -rf /cache/gap-rsync"
+echo 
+echo "Then check dev/index.html and use"
+echo "            dev/copytoweb"
+
