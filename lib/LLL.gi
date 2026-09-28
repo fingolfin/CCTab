@@ -81,8 +81,11 @@ end);
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
+# for the moment we do not use the threaded version, it is too slow on
+# larger matrices ...
 if Filename(DirectoriesPackagePrograms("CCTab"), "hnfintmat") <> fail then
-  BindGlobal("HermiteIntMat", HNFThreaded);
+  #BindGlobal("HermiteIntMat", HNFThreaded);
+  BindGlobal("HermiteIntMat", HermiteNormalFormIntegerMat);
 else
   BindGlobal("HermiteIntMat", HermiteNormalFormIntegerMat);
 fi;
