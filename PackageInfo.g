@@ -9,8 +9,8 @@ SetPackageInfo( rec(
 
 PackageName := "CCTab",
 Subtitle := "Constructing character tables",
-Version := "0.3.dev",
-Date := "02/09/2025", # dd/mm/yyyy format
+Version := "0.3",
+Date := "28/09/2026",
 License := "GPL-3.0-or-later",
 
 Persons := [
@@ -35,7 +35,7 @@ PackageWWWHome :="https://TODO",
 
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),
-ArchiveURL     := Concatenation( ~.PackageWWWHome, "CCTab-", ~.Version ),
+ArchiveURL     := Concatenation( ~.PackageWWWHome, "CCTab-0.3"),
 
 ArchiveFormats := ".tar.gz",
 
@@ -54,7 +54,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.14",
+  GAP := ">= 4.16",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ], [ "EDIM", ">=1.3.8"] ],
   SuggestedOtherPackages := [ ["nofoma", ">= 1.0"] ],
   ExternalConditions := [ ["libflint", ">= 3.1.3" ] ],
