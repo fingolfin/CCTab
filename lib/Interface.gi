@@ -93,7 +93,4 @@ end);
 InstallMethod(PowerMapOp,
              ["IsOrdinaryTable and HasUnderlyingGroup and HasCCTable", "IsInt"],
 PowerMapByPowerMapsOfAllClasses);
-InstallMethod(PowerMap,
-             ["IsOrdinaryTable and HasUnderlyingGroup and HasCCTable", "IsInt"],
-PowerMapByPowerMapsOfAllClasses);
 
