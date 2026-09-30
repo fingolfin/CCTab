@@ -45,6 +45,12 @@ The package provides some kernel functions and some external programs
 which use the FLINT (flintlib.org) library. We recommend to install them
 as well. See the file 'INSTALL' for details.
 
+## Status
+
+Version 0.3 is the first public release of the package. In all 
+versions 0.x we may introduce changes which are not backward compatible 
+to earlier versions (of course, we will try to avoid that).
+
 ## Feedback
 
 Use the issue tracker
