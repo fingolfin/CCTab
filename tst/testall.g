@@ -6,5 +6,7 @@
 
 LoadPackage( "CCTab" );
 
-TestDirectory(DirectoriesPackageLibrary( "CCTab", "tst" ));
+TestDirectory(DirectoriesPackageLibrary( "CCTab", "tst" ),
+  rec(exitGAP := true));
 
+FORCE_QUIT_GAP(1); # if we ever get here, there was an error
