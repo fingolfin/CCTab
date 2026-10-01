@@ -38,7 +38,7 @@ rm -f PackageInfo.g
 mv xxx PackageInfo.g
 
 # ArchiveURL in PackageInfo.g
-sed -e "s/CCTab-.*/CCTab-"$VERSION"\",/" < PackageInfo.g > xxx
+sed -e "s/CCTab-[^)]*/CCTab-"$VERSION"\"/" < PackageInfo.g > xxx
 rm -f PackageInfo.g
 mv xxx PackageInfo.g
 
