@@ -30,7 +30,8 @@ echo copying HTML- and PDF-version of manual . . .
 mkdir -p $WEBDIR/doc
 cp doc/*.html doc/*.css doc/*.js doc/manual.pdf $WEBDIR/doc/
 echo copying index.html pkgreadme.css PackageInfo.g README version . . .
-cp dev/index.html dev/pkgreadme.css PackageInfo.g INSTALL VERSION $WEBDIR
-cp README.md $WEBDIR/README.txt
+cp dev/index.html dev/pkgreadme.css PackageInfo.g VERSION $WEBDIR
+cp README.md $WEBDIR/README.md
 cp CHANGES $WEBDIR/CHANGES.txt
+cp INSTALL $WEBDIR/INSTALL.txt
 
