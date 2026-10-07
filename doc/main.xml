@@ -52,9 +52,10 @@ computations are slower. Call <C>./configure --help</C> for the complete
 list of options. <P/>
 
 The compiler and the compiler flags can be overridden, either in the
-environment or as arguments of <C>configure</C>, for example<P/>
+environment or as arguments of <C>configure</C>, for example to switch
+the compiler and enable CPU-specific optimizations<P/>
 
-<C>/bin/sh ./configure CC=clang CFLAGS="-O2 -g"</C><P/>
+<C>/bin/sh ./configure CC=clang CFLAGS="-O3 -g -march=native"</C><P/>
 
 Afterwards call <C>make</C>  to  compile the code. Individual flags can also
 be overridden at this point, e.g. by <C>make CFLAGS="-O2"</C>. <P/>

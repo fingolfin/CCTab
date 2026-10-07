@@ -32,9 +32,10 @@ computations are slower. Call ./configure --help for the complete
 list of options.
 
 The compiler and the compiler flags can be overwritten, either in the
-environment or as arguments of 'configure', for example:
+environment or as arguments of 'configure', for example to switch
+the compiler and enable CPU-specific optimizations:
 
-    /bin/sh ./configure CC=clang CFLAGS="-O2 -g"
+    /bin/sh ./configure CC=clang CFLAGS="-O3 -g -march=native"
 
 Afterwards call 'make'  to  compile the code. Individual flags can also
 be overridden at this point, e.g. by 'make CFLAGS="-O2"'.
