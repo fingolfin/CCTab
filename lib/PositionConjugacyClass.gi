@@ -143,7 +143,9 @@ CCInvFuncs.MinPol := function(r, tree)
   CCInvFuncs.refine(r, tree, fu);
 end;
 
-# if "nofoma" package loaded use Frobenius normal form for matrix groups
+# if "nofoma" package loaded use Frobenius normal form for matrix groups;
+# nofoma is only suggested, so look its function up by name to avoid an
+# "Unbound global variable" warning when reading this file without it
 CCInvFuncs.Frob := function(r, tree)
   local F, n, inSL, d, fu;
   F := FieldOfMatrixGroup(r.G);
@@ -157,12 +159,12 @@ CCInvFuncs.Frob := function(r, tree)
     fu := ReturnTrue;
   elif not IsFinite(F) or not inSL or d = 1 then
     fu := function(r, x)
-      return FrobeniusNormalForm(x)[1];
+      return ValueGlobal("FrobeniusNormalForm")(x)[1];
     end;
   else
     fu := function(r, x)
       local fr, g, e, pl;
-      fr := FrobeniusNormalForm(x);
+      fr := ValueGlobal("FrobeniusNormalForm")(x);
       g := d;
       for pl in fr[1] do
         if g = 1 then
