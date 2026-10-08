@@ -144,6 +144,7 @@ CCInvFuncs.MinPol := function(r, tree)
 end;
 
 # if "nofoma" package loaded use Frobenius normal form for matrix groups
+if IsBound(GAPInfo.PackagesLoaded.nofoma) then
 CCInvFuncs.Frob := function(r, tree)
   local F, n, inSL, d, fu;
   F := FieldOfMatrixGroup(r.G);
@@ -180,6 +181,9 @@ CCInvFuncs.Frob := function(r, tree)
   fi;
   CCInvFuncs.refine(r, tree, fu);
 end;
+else
+CCInvFuncs.Frob := ReturnTrue;
+fi;
 
 # for permutation groups: cycle structures on orbits of points
 CCInvFuncs.CycStruct := function(r, tree)
