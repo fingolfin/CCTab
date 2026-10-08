@@ -96,10 +96,10 @@ if ! cc_check ; then
   exit 1
 fi
 
-
-# default C flags
-CFLAGS="-O3"
-echo "Using CFLAGS: $CFLAGS"
+if test -z "${CFLAGS+set}" ; then
+  CFLAGS="-O3"
+  echo "Using CFLAGS: $CFLAGS"
+fi
 
 # Locating FLINT: an explicit --with-flint=PREFIX wins, otherwise we try
 # pkg-config, otherwise we hope that the compiler finds FLINT on its own.
