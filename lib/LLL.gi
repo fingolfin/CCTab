@@ -74,21 +74,58 @@ end);
 ##  Returns the Hermite normal form of the integer matrix <A>mat</A>.
 ##  The &GAP; variant is just <Ref BookName="Reference" 
 ##  Func="HermiteNormalFormIntegerMat"/>,
-##  the standalone variant essentially uses <C>fmpz_mat_hnf</C> from FLINT.
+##  the standalone variant uses a translation of DoNFIM to FLINT.
 ##  <Example>gap> HermiteIntMat(RandomUnimodularMat(4));
 ##  [ [ 1, 0, 0, 0 ], [ 0, 1, 0, 0 ], [ 0, 0, 1, 0 ], [ 0, 0, 0, 1 ] ]
 ##  </Example>
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
-# for the moment we do not use the threaded version, it is too slow on
-# larger matrices ...
-if Filename(DirectoriesPackagePrograms("CCTab"), "hnfintmat") <> fail then
-  #BindGlobal("HermiteIntMat", HNFThreaded);
-  BindGlobal("HermiteIntMat", HermiteNormalFormIntegerMat);
-else
-  BindGlobal("HermiteIntMat", HermiteNormalFormIntegerMat);
-fi;
+#     we do not use FLINT's hnf_int_mat, it is often quite slow in our context
+# DoNFIMthreads(mat, options) can also give Smith- and other normal forms,
+# including transforation matrices.
+TMPRES_NFIM_5830197461 := fail;
+BindGlobal("DoNFIMthreads", function(mat, options)
+  local prg, str, out, inp, res, i;
+  prg := Filename(DirectoriesPackagePrograms("CCTab"), "nfintmat_threads");
+  if prg = fail then
+    return DoNFIM(mat, options);
+  fi;
+  if not IsInt(options) or options < 0 or options > 31 then
+    Error("syntax is DoNFIM(<mat>,<options>)");
+  fi;
+  if prg = fail or not IsMatrix(mat) or Length(mat[1]) = 0 then
+    return DoNFIM(mat, options);
+  fi;
+  str := "";
+  out := OutputTextString(str, false);
+  PrintIntegerMatToFlint(out, mat);
+  CloseStream(out);
+  inp := InputTextString(str);
+  res := "";
+  out := OutputTextString(res, false);
+  Process(DirectoryCurrent(), prg, inp, out,
+          [String(NRFlintThreads), String(options mod 16)]);
+  CloseStream(inp);
+  CloseStream(out);
+  inp := InputTextString(res);
+  Read(inp);
+  CloseStream(inp);
+  res := TMPRES_NFIM_5830197461;
+  Unbind(TMPRES_NFIM_5830197461);
+  # option 16: as in DoNFIM the result is stored in mat
+  if options >= 16 then
+    for i in [1..Length(mat)] do
+      mat[i] := res.normal[i];
+    od;
+    res.normal := mat;
+  fi;
+  return res;
+end);
+BindGlobal("HermiteIntMat", function(mat)
+  return DoNFIMthreads(mat, 2).normal;
+end);
+
 
 # A: square symmetric positive definite matrix
 # computes a fraction free Gauss elimination, together with
