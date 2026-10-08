@@ -42,20 +42,25 @@ function( G )
   return tbl;
 end );
 
-InstallOtherMethod(Irr, ["IsOrdinaryTable and HasCCTable"],
-function(ct)
-  local CCT, ir, irr, perm, chs;
-  CCT := CCTable(ct);
-  ir := Irr(CCT);
-  irr := ExpandFromCCTable(CCT, ir);
-  perm := IdentificationOfConjugacyClasses(ct);
-  chs := List(irr, l-> Character(ct, l{perm}));
-  SetIrr(ct, chs);
-  SetInfoText(ct, "origin: computed by CCTable");
-  return chs;
-end);
 
-InstallMethod(Irr, ["IsGroup", "IsZeroCyc"], 
+##  Not needed now. Think again if later we have tables with HasCCTable but
+##  without UnderLyingGroup.
+##  When there is an UnderLyingGroup, the next method below will be called
+##  by a generic method which delegates to the group.
+##  
+##  InstallOtherMethod(Irr, ["IsOrdinaryTable and HasCCTable"],
+##  function(ct)
+##    local CCT, ir, irr, perm, chs;
+##    CCT := CCTable(ct);
+##    ir := Irr(CCT);
+##    irr := ExpandFromCCTable(CCT, ir);
+##    perm := IdentificationOfConjugacyClasses(ct);
+##    chs := List(irr, l-> Character(ct, l{perm}));
+##    SetIrr(ct, chs);
+##    SetInfoText(ct, "origin: computed by CCTable");
+##    return chs;
+##  end);
+GAPInfo.tmpIrr := 
 function(G, zero)
   local CCT, ir, irr, t, perm, chs;
   # test for a very efficient case
@@ -72,7 +77,14 @@ function(G, zero)
   SetIrr(t, chs); 
   SetInfoText(t, "origin: computed by CCTable");
   return chs;
-end);
+end;
+
+# We install the previous function twice 
+InstallMethod(Irr, ["IsGroup", "IsZeroCyc"], 
+  GAPInfo.tmpIrr);
+# ... and a workaround for a bad method in GAP library
+InstallMethod(Irr, ["IsGroup and IsHandledByNiceMonomorphism", "IsZeroCyc"], 
+  GAPInfo.tmpIrr);
 
 BindGlobal("PowerMapByPowerMapsOfAllClasses", 
 function(t, n)
