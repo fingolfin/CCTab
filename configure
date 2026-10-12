@@ -40,9 +40,21 @@ WITH_FLINT=auto
 # remember the arguments, so that the Makefile can re-run us if needed;
 # each argument is wrapped into single quotes, embedded single quotes are
 # escaped as '\''
+remember () {
+  CONFIGURE_ARGS="$CONFIGURE_ARGS '$(printf '%s' "$1" | sed "s/'/'\\\\''/g")'"
+}
+
+# the Makefile re-runs us without these variables in the environment, so
+# remember those which are set as arguments; they come first, as a real
+# argument overrides the environment
 CONFIGURE_ARGS=
+test -z "${CC+set}"         || remember "CC=$CC"
+test -z "${CFLAGS+set}"     || remember "CFLAGS=$CFLAGS"
+test -z "${CPPFLAGS+set}"   || remember "CPPFLAGS=$CPPFLAGS"
+test -z "${LDFLAGS+set}"    || remember "LDFLAGS=$LDFLAGS"
+test -z "${FLINT_LIBS+set}" || remember "FLINT_LIBS=$FLINT_LIBS"
 for arg in "$@" ; do
-  CONFIGURE_ARGS="$CONFIGURE_ARGS '$(printf '%s' "$arg" | sed "s/'/'\\\\''/g")'"
+  remember "$arg"
 done
 
 while test "$#" -ge 1 ; do

@@ -86,6 +86,8 @@ docclean:
 test:
 	$(GAP) -b -q -r < tst/testall.g
 
-# regenerate Makefile if any of its inputs changed
+# regenerate Makefile if any of its inputs changed; the variables are unset
+# because make exports its own values for them, which `configure` would take
+# for the user's choice
 Makefile: configure Makefile.in $(GAPPATH)/sysinfo.gap
-	./configure @CONFIGURE_ARGS@
+	unset CC CFLAGS CPPFLAGS LDFLAGS FLINT_LIBS; ./configure @CONFIGURE_ARGS@
