@@ -103,9 +103,9 @@ fi
 
 # Locating FLINT: an explicit --with-flint=PREFIX wins, otherwise we try
 # pkg-config, otherwise we hope that the compiler finds FLINT on its own.
+# FLINT_LIBS given by the user always wins.
 FLINT_CPPFLAGS=
 FLINT_LDFLAGS=
-FLINT_LIBS=${FLINT_LIBS:-"-lflint -lgmp"}
 if test "$WITH_FLINT" != no ; then
   if test -n "$FLINTPATH" ; then
     FLINT_CPPFLAGS="-I$FLINTPATH/include"
@@ -113,10 +113,13 @@ if test "$WITH_FLINT" != no ; then
   elif pkg-config --exists flint > /dev/null 2>&1 ; then
     FLINT_CPPFLAGS=$(pkg-config --cflags flint)
     FLINT_LDFLAGS=$(pkg-config --libs-only-L flint)
-    FLINT_LIBS=$(pkg-config --libs-only-l flint)
+    FLINT_LIBS=${FLINT_LIBS:-$(pkg-config --libs-only-l flint)}
     echo "Found FLINT via pkg-config."
   fi
+fi
+FLINT_LIBS=${FLINT_LIBS:-"-lflint -lgmp"}
 
+if test "$WITH_FLINT" != no ; then
   # verify that we can actually compile and link against FLINT
   cat > conftest.c <<EOF
 #include <flint/flint.h>
