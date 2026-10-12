@@ -171,9 +171,13 @@ escape () {
   printf '%s' "$1" | sed -e 's/[\\&|]/\\&/g' -e 's/\$/$$/g'
 }
 
+# make splits the arguments of `include` and prerequisites at spaces, unless
+# these are escaped by a backslash
+GAPPATH_MAKE=$(printf '%s' "$GAPPATH" | sed 's/ /\\ /g')
+
 # Creating Makefile
 sed \
-    -e "s|@GAPPATH@|$(escape "$GAPPATH")|g" \
+    -e "s|@GAPPATH@|$(escape "$GAPPATH_MAKE")|g" \
     -e "s|@CC@|$(escape "$CC")|g" \
     -e "s|@CFLAGS@|$(escape "$CFLAGS")|g" \
     -e "s|@CPPFLAGS@|$(escape "$CPPFLAGS")|g" \

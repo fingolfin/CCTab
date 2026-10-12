@@ -1,6 +1,7 @@
 # makefile prototype for the CCTab package (assuming GAP >= 4.12) Frank Lübeck
 
-# GAPPATH is found in `configure`, GAParch, GAP and GAC are set in sysinfo.gap
+# GAPPATH is found in `configure`, GAParch, GAP and GAC are set in sysinfo.gap;
+# the values of GAP and GAC include double quotes, so recipes do not add any
 GAPPATH=@GAPPATH@
 include $(GAPPATH)/sysinfo.gap
 
